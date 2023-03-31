@@ -68,3 +68,71 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Настройка проекта
+
+1. Создаём приложение npx create-react-app my-app
+2. Устанавливаем npm i react-router-dom
+3. npm i bootstrap импортируем стили в index.js import 'bootstrap/dist/css/bootstrap.css'
+4. npm i -g eslint
+5. Добавим некоторые настройки в .eslintrc.js:
+   module.exports = {
+   env: {
+   browser: true,
+   es2021: true
+   },
+   extends: ['plugin:react/recommended', 'standard'],
+   overrides: [],
+   parserOptions: {
+   ecmaVersion: 'latest',
+   sourceType: 'module'
+   },
+   plugins: ['react'],
+   rules: {
+   indent: [0, 2, { SwitchCase: 1 }],
+   semi: [2, 'never'],
+   'space-before-function-paren': [
+   'error',
+   { anonymous: 'always', named: 'never' }
+   ],
+   quotes: [
+   'error',
+   'single',
+   {
+   allowTemplateLiterals: true,
+   avoidEscape: true
+   }
+   ],
+   'multiline-ternary': ['off'],
+   'no-trailing-spaces': ['error', { skipBlankLines: true }]
+   }
+   }
+
+   а также в .prettierrc.js:
+   module.exports = {
+   trailingComma: 'none',
+   tabWidth: 2,
+   semi: false,
+   singleQuote: true,
+   jsxSingleQuote: true
+   }
+
+6. Добавим в файл package.json строчку в scripts "format": "npx prettier --write ." :
+   "scripts": {
+   "start": "react-scripts start",
+   "build": "react-scripts build",
+   "test": "react-scripts test",
+   "eject": "react-scripts eject",
+   "format": "npx prettier --write ."
+   }
+
+7. Установить PropTypes npm i prop-types
+   import PropTypes from 'prop-types'
+   Pagination.propTypes = {
+   itemsCount: PropTypes.number.isRequired,
+   pageSize: PropTypes.number.isRequired,
+   onPageChange: PropTypes.func.isRequired,
+   currentPage: PropTypes.number.isRequired,
+   }
+
+8.
